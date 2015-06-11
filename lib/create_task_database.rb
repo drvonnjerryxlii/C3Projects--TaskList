@@ -4,7 +4,7 @@ db = SQLite3::Database.open "db/task.db"
 # db = SQLite3::Database.new "db/task.db"
 
 # db.execute "CREATE TABLE taskList
-#         (id INTEGER PRIMARY KEY, name TEXT NOT NULL, 
+#         (id INTEGER PRIMARY KEY, name TEXT NOT NULL,
 #           description TEXT, date_completed TEXT);"
 
 # db.execute "DROP TABLE taskList;"
