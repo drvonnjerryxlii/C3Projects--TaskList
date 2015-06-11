@@ -5,3 +5,8 @@
 </form>
 
 <p><%= params %></p>
+<% unless @tasks.nil? %> 
+  <% @tasks.each do |task| %>
+    <%= task %>
+  <% end %>
+<% end %>
