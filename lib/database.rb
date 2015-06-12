@@ -9,18 +9,11 @@ module TaskList
 
     end
 
-    # def try_create_db
-    #   db = SQLite3::Database.new database_name
-    #   db.execute "CREATE TABLE tasks
-    #     (id INTEGER PRIMARY KEY, name TEXT NOT NULL,
-    #       description TEXT, date_completed TEXT);"
-    #   db.close if db
-    # end
-
     private
 
     def query!(statement, *params)
-      db = SQLite3::Database.new database_name # we changed this to an instance variable & to use open, because otherwise it doesn't make sense.
+      db = SQLite3::Database.new database_name
+      # we added this line so that we could return the result of performing whatever operation is passed in.
       @last_result = db.execute statement, params
     rescue SQLite3::Exception => error
       # use this block to recover from an error
@@ -28,19 +21,10 @@ module TaskList
       # inspect the `error` object for information about the error
     ensure
       db.close if db
+
+      # actually return the result now.
       return last_result
     end
 
   end
 end
-
-
-
-
-
-
-
-
-
-
-

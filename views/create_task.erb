@@ -1,12 +1,6 @@
-<form id="create" class="" action="" method="post">
+<form id="create" class="" action="/" method="post">
   <label>Name <input type="text" name="name" placeholder="create a to-do list app" required /></label>
   <label>Description <input type="text" name="description" placeholder="You can put an optional description of your task here." /></label>
+  <label>Date of completion <input type="text" name="complete" placeholder="optional" /></label>
   <button type="submit">Create New Task</button>
 </form>
-
-<p><%= params %></p>
-<% unless @tasks.nil? %> 
-  <% @tasks.each do |task| %>
-    <%= task %>
-  <% end %>
-<% end %>

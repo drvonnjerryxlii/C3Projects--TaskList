@@ -8,6 +8,9 @@ class TaskSite < Sinatra::Base
   register Sinatra::Reloader
 
   get "/" do
+    task_db = TaskList::TaskList.new("tasks.db")
+    @tasks = task_db.all_tasks
+    
     erb :index
   end
 
@@ -15,14 +18,13 @@ class TaskSite < Sinatra::Base
     erb :create_task
   end
 
-  post "/create" do
-    @task_db = TaskList::TaskList.new("tasks.db")
-    # @name = params[:name]
-    # @description = params[:description]
-    # {"name"=>"asdf", "description"=>"asdf"}
-    @task_db.create_task(params[:name], params[:description])
-    @tasks = @task_db.all_tasks
-    erb :create_task
+  post "/" do
+    task_db = TaskList::TaskList.new("tasks.db")
+    task_db.create_task(params[:name], params[:description])
+
+    @tasks = task_db.all_tasks
+
+    erb :index
   end
 
   get "/update" do

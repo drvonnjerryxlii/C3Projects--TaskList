@@ -5,6 +5,14 @@
     <title>TASKMASTER - funny tagline here</title>
   </head>
   <body>
-    <%= yield %>
+    <header>
+      <nav>
+        <p>TASKMASTER options: <a href="/create">Create a new task!</a></p>
+        <!-- <p><a href="/update">Update a task!</a></p> -->
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

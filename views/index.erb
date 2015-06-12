@@ -1,4 +1,19 @@
 <h1>TASKMASTER</h1>
 
-<p><a href="/create">Create a new task!</a></p>
-<p><a href="/update">Update a task!</a></p>
+<% unless @tasks.nil? %>
+  <table>
+    <tr>
+      <td width="50">id</td>
+      <td width="150">task name</td>
+      <td width="200">description</td>
+      <td>date completed</td>
+    </tr>
+    <% @tasks.each do |task| %>
+      <tr>
+        <% task.each do |field| %>
+          <td><%= field %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
