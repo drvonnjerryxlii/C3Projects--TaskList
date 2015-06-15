@@ -3,10 +3,10 @@
 <% unless @tasks.nil? %>
   <table>
     <tr>
-      <td width="50">id</td>
-      <td width="150">task name</td>
-      <td width="200">description</td>
-      <td>date completed</td>
+      <th id="id">id</th>
+      <th id="name">task name</th>
+      <th id="description">description</th>
+      <th id="date">date completed</th>
     </tr>
     <% @tasks.each do |task| %>
       <tr>
