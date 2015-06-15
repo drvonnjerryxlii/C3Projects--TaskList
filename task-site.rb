@@ -10,7 +10,7 @@ class TaskSite < Sinatra::Base
   get "/" do
     task_db = TaskList::TaskList.new("tasks.db")
     @tasks = task_db.all_tasks
-    
+
     erb :index
   end
 
@@ -20,7 +20,11 @@ class TaskSite < Sinatra::Base
 
   post "/" do
     task_db = TaskList::TaskList.new("tasks.db")
-    task_db.create_task(params[:name], params[:description])
+    @maybe_error = task_db.create_task(params[:name], params[:description])
+
+    # if maybe_error.class == String
+    #   @error = maybe_error
+    # end
 
     @tasks = task_db.all_tasks
 

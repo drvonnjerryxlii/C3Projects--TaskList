@@ -1,4 +1,6 @@
 require 'sqlite3'
+require "pry"
+
 require_relative "database"
 
 module TaskList
@@ -17,11 +19,19 @@ module TaskList
       name, description = *args
 
       # prepare SQLite3 statement to insert new tasks into our tasks database.
-      if description
+      if description && name != ""
         statement = "INSERT INTO tasks(name, description) VALUES(\"#{ name }\", \"#{ description }\");"
+      elsif name != ""
+        statement = "INSERT INTO tasks(name) VALUES('#{ name }')"
       else
-        statement = "INSERT INTO tasks(name) VALUES(\"#{ name }\");"
+        begin
+          raise
+        rescue
+          return "Task not created: Don't leave the name of the task blank!"
+        end
       end
+
+      # binding.pry
 
       # call query! on the statement. query! will return the result of performing the given statement on our tasks database.
       query!(statement)

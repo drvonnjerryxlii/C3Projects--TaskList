@@ -15,7 +15,7 @@ module TaskList
       db = SQLite3::Database.new database_name
       # we added this line so that we could return the result of performing whatever operation is passed in.
       @last_result = db.execute statement, params
-    rescue SQLite3::Exception => error
+    # rescue SQLite3::Exception => error
       # use this block to recover from an error
       # consider giving the user a special message back
       # inspect the `error` object for information about the error

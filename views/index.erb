@@ -1,3 +1,7 @@
+<% if @maybe_error %>
+  <h1 id="error"><%= @maybe_error %></h1>
+<% end %>
+
 <h1>TASKMASTER</h1>
 
 <% unless @tasks.nil? %>
