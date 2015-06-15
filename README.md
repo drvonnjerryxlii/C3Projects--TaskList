@@ -1,13 +1,3 @@
-- - -
-> ## Monday ##
-- - -
-
-breakfast:
-* style things
-   * table view on index page
-   * form on create page
-* error messages from `database.rb`
-
 Katie & Jeri
 # Task List
 
