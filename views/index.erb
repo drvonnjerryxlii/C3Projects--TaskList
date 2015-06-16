@@ -1,4 +1,4 @@
-<% if @maybe_error %>
+<% if @maybe_error && @maybe_error.length > 0 %>
   <h1 id="error"><%= @maybe_error %></h1>
 <% end %>
 
@@ -11,12 +11,15 @@
       <th id="name">task name</th>
       <th id="description">description</th>
       <th id="date">date completed</th>
+      <th id="edit-link">edit task?</th>
     </tr>
     <% @tasks.each do |task| %>
+      <% task_id = task[0] %>
       <tr>
         <% task.each do |field| %>
           <td><%= field %></td>
         <% end %>
+        <td><a href="/update/<%= task_id %>">Edit this task.</a></td>
       </tr>
     <% end %>
   </table>

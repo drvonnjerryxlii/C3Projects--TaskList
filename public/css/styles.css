@@ -1,6 +1,8 @@
 body {
   width: 960px;
   background: #ccc;
+  font-family: 'Indie Flower', cursive;
+  font-size: 20px;
   margin: 2% auto;
   text-align: center;
 }
@@ -19,12 +21,28 @@ main {
 }
 
 nav {
-  font-size: 20px;
+  font-size: 28px;
+}
+
+nav a {
+  padding: 20px;
+}
+
+a:link, a:visited {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  color: #33c;
+  font-weight: bold;
 }
 
 table {
   border-collapse: collapse;
   margin: auto;
+  font-family: "Arial", sans-serif;
+  font-size: 16px;
 }
 
 table, th, td {

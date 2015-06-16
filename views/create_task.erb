@@ -1,6 +1,15 @@
-<form id="create" class="" action="/" method="post">
-  <label>Name <input size="50" type="text" name="name" placeholder="create a to-do list app" /></label>
-  <label>Description <input size="50" type="text" name="description" placeholder="You can put an optional description of your task here." /></label>
-  <label>Date of completion <input size="50" type="text" name="complete" placeholder="optional" /></label>
-  <button type="submit">Create New Task</button>
+<% if @task %>
+  <% task_id = @task[0][0] %>
+  <% task_name = @task[0][1] %>
+  <% task_description = @task[0][2] %>
+  <% task_complete = @task[0][3] %>
+<% end %>
+
+<form id="create" class="" action="/" method='<%= @task ? "post" : "post" %>'>
+  <%= @task ? '<input type="hidden" name="_method" value="put" />' : "" %>
+  <input type="hidden" name="id" value="<%= task_id %>" />
+  <label>Name <input size="50" type="text" name="name" placeholder="create a to-do list app" value="<%= task_name || ' ' %>" /></label>
+  <label>Description <input size="50" type="text" name="description" placeholder="You can put an optional description of your task here." value="<%= task_description || ' ' %>" /></label>
+  <label>Date of completion <input size="50" type="text" name="complete" placeholder="optional" value="<%= task_complete || ' ' %>" /></label>
+  <button type="submit"><%= @task ? "Update Task" : "Create New Task" %></button>
 </form>

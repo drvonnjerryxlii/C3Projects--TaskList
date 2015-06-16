@@ -22,7 +22,7 @@ module TaskList
       if description && name != ""
         statement = "INSERT INTO tasks(name, description) VALUES(\"#{ name }\", \"#{ description }\");"
       elsif name != ""
-        statement = "INSERT INTO tasks(name) VALUES('#{ name }')"
+        statement = "INSERT INTO tasks(name) VALUES('#{ name }');"
       else
         begin
           raise
@@ -37,10 +37,56 @@ module TaskList
       query!(statement)
     end
 
+    def complete_task(id)
+      # santitize/validate your arguments
+      id = id.to_i
+
+      # prepare your statement
+      statement = "UPDATE tasks SET date_completed='#{ Time.now }' WHERE id=#{ id };"
+
+      # call `query!` to interact with the database
+      query! statement
+
+      # determine what should be returned
+    end
+
+    def delete_task(id)
+      # santitize/validate your arguments
+      id = id.to_i
+
+      # prepare your statement
+      statement = "DELETE FROM tasks WHERE id=#{ id };"
+
+      # call `query!` to interact with the database
+      query! statement
+
+      # determine what should be returned
+    end
+
+    def select_task(id)
+      # santitize/validate your arguments
+      id = id.to_i
+
+      # prepare your statement
+      statement = "SELECT * FROM tasks WHERE id=#{ id };"
+
+      # call `query!` to interact with the database
+      query! statement
+
+      # determine what should be returned
+    end
+
     def update_task(*args)
       # santitize/validate your arguments
+      id, name, description, complete = *args
+      id = id.to_i
+
       # prepare your statement
+      statement = "UPDATE tasks SET name='#{ name }', description='#{ description }', date_completed='#{ complete }' WHERE id=#{ id };"
+
       # call `query!` to interact with the database
+      query! statement
+
       # determine what should be returned
     end
   end # class
